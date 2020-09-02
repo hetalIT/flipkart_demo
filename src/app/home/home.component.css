@@ -1,0 +1,32 @@
+.home-container{
+    /* background-color: bisque; */
+}
+.home-primary-slider{
+    padding:0.6%;
+    width:100%;
+    /* background-color: aquamarine; */
+}
+.home-product-slider{
+    padding:0 0.6% 0.6% 0.6%;
+    width:100%;
+    display: flex;
+    /* background-color: aquamarine; */
+}
+.home-product-link{
+    padding:0 0.6% 0 0.6%;
+    width:100%;
+}
+.advertisement-div{
+    width: 18%; 
+    height: 325px;
+    margin: 0 0 0 .7%;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    /* position: absolute;
+    margin-top: -25%;right: 0.6%; */
+    /* margin-left: 10%; */
+}
+.advertisement-div img{
+    padding: 2%;
+}

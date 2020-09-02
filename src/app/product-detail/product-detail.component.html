@@ -1,0 +1,83 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<div class="product-detail-container">
+  <div class="product-detail-wrapper">
+      <div class="product-detail-container-left">
+        <section class="price-filter-container filter-style">
+          <div>Price</div>
+          <div>
+            <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [(options)]="options"
+            (userChangeEnd)="onValueChange(minValue, maxValue)" id="filterSlider" *ngIf="productsForPriceFilter?.length>1"></ng5-slider>
+          </div>
+          <div *ngIf="productsForPriceFilter?.length>1">
+            <div class="price-filter-dropdown-container">
+              <div class="min-filter">
+                <select class="min-filter-style" (change)="onMinChange($event.target.value)" id="minDropdown">
+                  <option (value)="minvalue" *ngFor="let minvalue of minFilterArray">{{minvalue}}</option>
+                </select>
+                <!--mm-->
+              </div>
+              <div class="to-text">
+                <span>To</span>
+              </div>
+              <div class="max-filter">
+                <select class="min-filter-style" id="maxDropdown" (change)="onMaxChange($event.target.value)">
+                  <option (value)="maxvalue" *ngFor="let maxvalue of maxFilterArray;let l=last;" [attr.selected]="l">{{maxvalue}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="product-detail-container-right">
+
+        <div class="product-right-top">
+          <div class="product-right-top-1">
+            <h1>{{productName | titlecase}}</h1>
+            <div class="product-right-top-sortby" *ngIf="products?.length>0">
+              <span class="sortby-style">Sort By</span>
+              <div class="sortby-style sortby-style-div" (click)="displayLowToHigh()" id="lowThigh">Price -- Low to High</div>
+              <div class="sortby-style sortby-style-div" (click)="displayHighToLow()" id="highTlow">Price -- High to Low</div>
+              <div class="sortby-style sortby-style-div sortby-style-div-selected" (click)="displayNewestFirst()" id="newestFirst">Newest First</div>
+            </div>
+          </div>
+          <h2 *ngIf="products?.length<1" style="text-align: center;">No Products Found</h2>
+        </div>
+        <div class="product-right-detail-loop" *ngFor="let product of products; let i=index;"
+        >
+          <div class="product-container">
+            <!-- {{product.product_name}} -->
+            <div class="product-container-left">
+              <div [ngStyle]="{'background': 'url('+product?.product_image+') no-repeat'}" (click)="onClick(product._id, product.product_name)"></div>
+              <div>
+                <span>
+                  <mat-checkbox style="font-weight: normal;">Add to Compare</mat-checkbox>
+                </span>
+              </div>
+              <div><i class="fa fa-heart" (click)="onLikeClick(product._id, i)" id="like{{i}}" [ngStyle]="{color: wishlist?.includes(product._id)?'#ff4343':'#C8C8C8'}"></i></div>
+            </div>
+            <div class="product-container-right" (click)="onClick(product._id, product.product_name)">
+                <div class="product-container-right-desc">
+                  <div class="product-container-right1">
+                    <div class="product-name-desc">{{product.product_name | titlecase}} ({{product.product_short_description | titlecase}})</div>
+                    <div class="product-feature">
+                      <ul *ngIf="product.product_long_description">
+                        <li *ngFor="let feature of product.product_long_description.split(';')">{{ feature }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-container-right2">
+                    <div>
+                      <span>&#8377; {{product.product_price}}</span>
+                    </div>
+                    <div>
+                      <img src="../../assets/img/fb_assured.png" alt="" height="21">
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

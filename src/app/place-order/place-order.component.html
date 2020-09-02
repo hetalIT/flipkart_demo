@@ -1,0 +1,425 @@
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<div class="placeOrder-wrapper-left">
+  <div class="login-section" *ngIf="isUserLoggedIn">
+    <div class="login-section1 shadow-style">
+      <div class="login-section11">
+        <h3 class="login-section-h3">
+          <span class="login-section-span">1</span>
+        </h3>
+        <div class="login-section111">
+          <div class="login-section1111">
+            Login<mat-icon class="check-mark">check</mat-icon><br />
+            <span class="mobile-no-style">+{{ userMobile }}</span>
+          </div>
+          <div class="login-section1112"></div>
+        </div>
+        <button mat-stroked-button class="change-btn">Change</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-section2" *ngIf="!isUserLoggedIn">
+    <div class="login-section2-container shadow-style">
+      <h3 class="placeOrder-step-style login-section2-h3">
+        <span class="step-number-style">1</span>
+        <span class="">Login or Signup</span>
+      </h3>
+      <div>
+        <div class="login-section21">
+          <div class="login-section211">
+            <form autocomplete="off" [formGroup]="loginForm">
+              <div class="login-right-part1">
+                <mat-form-field>
+                  <input
+                    matInput
+                    formControlName="user_login"
+                    (keyup)="setValidation()"
+                  />
+                  <mat-placeholder class="placeholder"
+                    >Enter Email/Mobile number</mat-placeholder
+                  >
+                  <mat-error>
+                    Please enter valid Email ID/Mobile number
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field *ngIf="continueClicked">
+                  <input
+                    matInput
+                    type="password"
+                    autocomplete="new-password"
+                    formControlName="user_password"
+                  />
+                  <mat-placeholder class="placeholder"
+                    >Enter Password</mat-placeholder
+                  >
+                  <mat-error
+                    *ngIf="loginForm.get('user_password').hasError('required')"
+                  >
+                    Password is required
+                  </mat-error>
+                  <mat-error
+                    *ngIf="loginForm.get('user_password').hasError('minlength')"
+                  >
+                    Password must be greater or equal to 8 characters
+                  </mat-error>
+                </mat-form-field>
+                <div class="forgot-password" *ngIf="continueClicked">
+                  Forgot?
+                </div>
+                <div
+                  *ngIf="invalidPassword"
+                  class="mat-error"
+                  style="font-size: 12px; margin-top: -6%;"
+                >
+                  Your Password is Invalid
+                </div>
+              </div>
+              <div class="login-right-part1">
+                <button
+                  class="login-right-part11"
+                  (click)="onLoginClick()"
+                  [disabled]="!loginForm.get('user_login').valid"
+                >
+                  {{ continueClicked ? "Login" : "Continue" }}
+                </button>
+                <!-- <button class="login-right-part12">Existing User? Log in</button> -->
+              </div>
+            </form>
+          </div>
+          <div class="login-section212"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="delivery-address-section" *ngIf="isUserLoggedIn && !showOrderSummary">
+    <form [formGroup]="addressForm">
+      <div class="shadow-style">
+        <h3 class="placeOrder-step-style login-section2-h3">
+          <span class="step-number-style">2</span>
+          <span class="">Delivery Address</span>
+        </h3>
+        <div class="delivery-address-section1">
+          <div class="delivery-address-section11">
+            <mat-radio-button value="1" checked class="text-in-uppercase"
+              >Add a new address</mat-radio-button
+            >
+          </div>
+          <div class="delivery-address-section12">
+            <div class="delivery-address-section121">
+              <div class="delivery-address-section1211">
+                <button class="current-location-button" type="button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    class="-fgCFc"
+                  >
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h16v16H0z"></path>
+                      <path
+                        class=""
+                        fill="#fff"
+                        d="M8 5.3a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 1 0 0-5.4zm6 2A6 6 0 0 0 8.7 2V.7H7.3V2A6 6 0 0 0 2 7.3H.7v1.4H2A6 6 0 0 0 7.3 14v1.3h1.4V14A6 6 0 0 0 14 8.7h1.3V7.3H14zm-6 5.4A4.7 4.7 0 0 1 3.3 8 4.7 4.7 0 0 1 8 3.3 4.7 4.7 0 0 1 12.7 8 4.7 4.7 0 0 1 8 12.7z"
+                      ></path>
+                    </g>
+                  </svg>
+                  Use my current location
+                </button>
+              </div>
+              <div class="delivery-address-section1212 address-fields-styles">
+                <!-- <input matInput required formControlName="addr_name" type="text">                 -->
+                <mat-form-field hideRequiredMarker appearance="fill">
+                  <!-- <input type="text" style="color:black;"> -->
+                  <input
+                    matInput
+                    required
+                    formControlName="addr_name"
+                    type="text"
+                  />
+                  <mat-placeholder class="placeholder">Name</mat-placeholder>
+                  <mat-error class="mat-error-custom-style">
+                    Please fill out this field
+                  </mat-error>
+                  <mat-label>Name</mat-label>
+                </mat-form-field>
+                <mat-form-field
+                  style="margin-left: 6%;"
+                  hideRequiredMarker
+                  appearance="fill"
+                >
+                  <input
+                    matInput
+                    type="phone"
+                    formControlName="delivery_mobile_no"
+                    maxlength="10"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  />
+                  <mat-label class="placeholder"
+                    >10-digit mobile number</mat-label
+                  >
+                  <mat-error
+                    class="mat-error-custom-style"
+                    *ngIf="
+                      addressForm.get('delivery_mobile_no').hasError('required')
+                    "
+                  >
+                    Please fill out this field
+                  </mat-error>
+                  <mat-error
+                    class="mat-error-custom-style"
+                    *ngIf="
+                      addressForm
+                        .get('delivery_mobile_no')
+                        .hasError('minlength') ||
+                      addressForm
+                        .get('delivery_mobile_no')
+                        .hasError('maxlength') ||
+                      addressForm.get('delivery_mobile_no').hasError('pattern')
+                    "
+                  >
+                    Not a valid number
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="delivery-address-section1213 address-fields-styles">
+                <mat-form-field hideRequiredMarker appearance="fill">
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="pincode"
+                    maxlength="6"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  />
+                  <mat-label class="placeholder">Pincode</mat-label>
+                  <mat-error
+                    class="mat-error-custom-style"
+                    *ngIf="addressForm.get('pincode').hasError('required')"
+                  >
+                    Please fill out this field
+                  </mat-error>
+                  <mat-error
+                    class="mat-error-custom-style"
+                    *ngIf="addressForm.get('pincode').hasError('min')"
+                  >
+                    Not a valid number
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field
+                  style="margin-left: 6%;"
+                  hideRequiredMarker
+                  appearance="fill"
+                >
+                  <input matInput required formControlName="locality" />
+                  <mat-label class="placeholder">Locality</mat-label>
+                  <mat-error class="mat-error-custom-style">
+                    Please fill out this field
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="delivery-address-section1214 address-fields-styles">
+                <mat-form-field appearance="fill">
+                  <textarea
+                    matInput
+                    style="resize: none;"
+                    formControlName="address"
+                  ></textarea>
+                  <mat-label class="placeholder"
+                    >Address (Area and Street)</mat-label
+                  >
+                  <mat-error class="mat-error-custom-style">
+                    Please fill out this field
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="delivery-address-section1215 address-fields-styles">
+                <mat-form-field
+                  hideRequiredMarker
+                  style="width: 47%;"
+                  appearance="fill"
+                >
+                  <input matInput type="text" required formControlName="city" />
+                  <mat-label class="placeholder">City/District/Town</mat-label>
+                  <mat-error class="mat-error-custom-style">
+                    Please fill out this field
+                  </mat-error>
+                </mat-form-field>
+                <select
+                  class="form-control"
+                  id="state-list-style"
+                  formControlName="state"
+                >
+                  <option label="--select something --"
+                    >--Select State--</option
+                  >
+                  <option *ngFor="let c of states" [value]="c">{{ c }}</option>
+                </select>
+                <div
+                  class="mat-error-custom-style state-error-style"
+                  *ngIf="
+                    addressForm.get('state').hasError('required') &&
+                    addressForm.get('state').touched
+                  "
+                >
+                  Please fill out this field
+                </div>
+              </div>
+              <div class="delivery-address-section1216 address-fields-styles">
+                <mat-form-field appearance="fill">
+                  <input matInput formControlName="landmark" />
+                  <mat-label class="placeholder">Landmark (Optional)</mat-label>
+                  <!-- <mat-error class="mat-error-custom-style">
+                        Please fill out this field
+                    </mat-error> -->
+                </mat-form-field>
+                <mat-form-field
+                  style="margin-left: 6%;"
+                  hideRequiredMarker
+                  appearance="fill"
+                >
+                  <input
+                    matInput
+                    type="phone"
+                    formControlName="alternate_mobile_no"
+                    maxlength="10"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  />
+                  <mat-label class="placeholder"
+                    >Alternate Phone (Optional)</mat-label
+                  >
+                  <mat-error
+                    class="mat-error-custom-style"
+                    *ngIf="
+                      addressForm
+                        .get('alternate_mobile_no')
+                        .hasError('minlength') ||
+                      addressForm
+                        .get('alternate_mobile_no')
+                        .hasError('maxlength') ||
+                      addressForm.get('alternate_mobile_no').hasError('pattern')
+                    "
+                  >
+                    Not a valid number
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="delivery-address-section1217">
+                <div>Address Type</div>
+                <div>
+                  <mat-radio-group formControlName="addr_type">
+                    <mat-radio-button value="Home" class="radio-button-style"
+                      >Home (All day delivery)</mat-radio-button
+                    >
+                    <mat-radio-button
+                      value="Work"
+                      style="margin-left: 4%;"
+                      class="radio-button-style"
+                      >Work (Delivery between 10 AM - 5 PM)</mat-radio-button
+                    >
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="delivery-address-section1218">
+                <button
+                  class="address-btn"
+                  type="submit"
+                  (click)="onSaveAddressClick()"
+                >
+                  <span>Save and Deliver here</span>
+                </button>
+                <button class="cancel-btn-css" type="button" tabindex="11" (click)="onCancelClick()">Cancel</button>
+                <!-- <button class="address-btn" type="submit" onclick="javascript:if(true) alert('hi'); else alert('hello')"><span>Save and Deliver here</span></button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="delivery-address-section2" *ngIf="isUserLoggedIn && showOrderSummary">
+    <div class="login-section1 shadow-style">
+      <div class="login-section11">
+        <h3 class="login-section-h3">
+          <span class="login-section-span">2</span>
+        </h3>
+        <div class="login-section111">
+          <div class="login-section1111 saved-addr-display">
+            Delivery Address<mat-icon class="check-mark">check</mat-icon><br />
+            <span class="mobile-no-style saved-addr-display-style">
+              <b style="font-weight:550;">{{addressForm.value.addr_name}}</b>
+              <span> {{addressForm.value.address}} {{addressForm.value.locality}} {{addressForm.value.city}}
+                  {{addressForm.value.state}} <b style="font-weight:550;">- {{addressForm.value.pincode}}</b></span>
+            </span>
+          </div>
+          <div class="login-section1112"></div>
+        </div>
+        <button mat-stroked-button class="change-btn" (click)="showOrderSummary=false">Change</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="delivery-address-section2" *ngIf="!isUserLoggedIn">
+    <div class="shadow-style">
+      <h3
+        class="placeOrder-step-style login-section2-h3"
+        style="background-color: #FFFFFF; color: #878787;"
+      >
+        <span class="step-number-style">2</span>
+        <span class="">Delivery Address</span>
+      </h3>
+    </div>
+  </div>
+
+  <div class="order-summary-section" *ngIf="!isUserLoggedIn || !showOrderSummary">
+    <div class="shadow-style">
+      <h3
+        class="placeOrder-step-style login-section2-h3"
+        style="background-color: #FFFFFF; color: #878787;"
+      >
+        <span class="step-number-style">3</span>
+        <span class="">Order Summary</span>
+      </h3>
+    </div>
+  </div>
+
+  <div class="order-summary-section2" *ngIf="isUserLoggedIn && showOrderSummary">
+    <div class="shadow-style">
+      <h3
+        class="placeOrder-step-style login-section2-h3">
+        <span class="step-number-style">3</span>
+        <span class="">Order Summary</span>
+      </h3>
+
+     <ng-content></ng-content>
+
+     <div class="login-right-part1 continue-btn-style">
+      <button (click)="onContinueClick()" class="login-right-part11 continue-btn"><span>Continue</span></button>
+     </div>
+    </div>
+  </div>
+
+  <div class="payment-section" *ngIf="!isUserLoggedIn || !continueOrderClicked">
+    <div class="shadow-style">
+      <h3
+        class="placeOrder-step-style login-section2-h3"
+        style="background-color: #FFFFFF; color: #878787;"
+      >
+        <span class="step-number-style">4</span>
+        <span class="">Payment Options</span>
+      </h3>
+    </div>
+  </div>
+
+  <div class="payment-section" *ngIf="isUserLoggedIn && continueOrderClicked">
+    <div class="shadow-style">
+      <h3
+        class="placeOrder-step-style login-section2-h3">
+        <span class="step-number-style">4</span>
+        <span class="">Payment Options</span>
+      </h3>
+      <div id="paypal-checkout-btn" style="padding: 16px;"></div>
+    </div>
+  </div>
+</div>

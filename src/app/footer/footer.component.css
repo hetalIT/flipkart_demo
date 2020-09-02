@@ -1,0 +1,16 @@
+.footer-container{
+    width: 100%;
+    background-color: #172337;
+}
+.footer-wrapper{
+    border-top: 1px solid #454d5e;
+    padding: 25px 0;
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    font-family: Roboto,Arial,sans-serif;
+    letter-spacing: 0;
+    font-size: 14px;
+    color: white;
+    justify-content: center;
+}

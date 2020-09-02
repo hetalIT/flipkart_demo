@@ -1,0 +1,18 @@
+button{
+    text-transform: uppercase;
+    margin-top: 35px;
+    font-size: 16px;
+    font-weight: 550;
+    border: 1px solid #c2c2c2;
+    border-radius: 2px;
+}
+.dialog-container{
+    padding: 5%;
+}
+.remove-item-text{
+    padding: 0 0 26px 0;
+    line-height: 14px;
+    font-weight: 550;
+    font-size: 18px;
+    color: black;
+}

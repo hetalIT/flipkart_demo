@@ -1,0 +1,218 @@
+.product-detail-container{
+    width: 100%;
+    /* background-color: #F1F3F6; */
+    padding:0.6%;
+}
+.product-detail-wrapper{
+    width: 100%;
+    display: flex;
+
+    font-family: Roboto,Arial,sans-serif !important;
+    letter-spacing: 0;
+}
+.product-detail-container-left{
+    width: 20%;
+    /* box-shadow: 1px 2px 10px -1px rgba(102, 101, 101, 0.3); */
+    margin-right: 0.6%;
+    background-color: #FFFFFF;
+}
+.product-detail-container-right{
+    width: 80%;
+    background-color: #FFFFFF;
+    /* box-shadow: 1px 2px 10px -1px rgba(102, 101, 101, 0.3); */
+    /* border: 1px solid red; */
+}
+.product-right-top{
+    width: 100%;
+}
+.product-right-top-1{
+    padding: 12px 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.product-right-top div>h1{
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 8px;
+}
+.product-right-detail-loop{
+    width: 100%;
+    cursor: pointer;
+}
+.product-container{
+    padding: 24px 0 30px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+}
+.product-container-left{
+    width: 20%;
+    /* border-bottom: 1px solid red; */
+    /* border-right: 1px solid green; */
+}
+.product-container-left div:first-child{
+    /* width: inherit; */
+    height: 200px;
+    margin: 0 5% 0 0;
+    /* margin-top: .7%;  */
+    background-position: center !important;
+    background-size: contain!important;
+}
+.product-container-left div:nth-child(2){
+    margin-top: 16px;
+}
+.product-container-left div:last-child{
+    position: absolute;
+    font-size: 16px;
+    margin-top: -18.7%;
+    margin-left: 14.7%;
+    color: #C8C8C8;
+}
+.product-container-right{
+    width: 80%;
+    /* border-bottom: 1px solid #f0f0f0; */
+}
+.product-container-right-desc{
+    padding-left: 25px;
+    width: 100%;
+    display: flex;
+}
+.product-name-desc{
+    font-weight: 600;
+    font-size: 18px;
+}
+.product-name-desc:hover{
+    color: #538FF3;
+}
+.product-feature{
+    margin-top: 13px;
+    font-size: 14px;
+}
+.product-feature ul{
+    /* margin: 0;*/
+    padding-left: 2%;
+}
+.product-container-right1{
+    width: 58.33%;
+}
+.product-container-right2{
+    padding-left: 2%;
+    width: 41.66%;
+    display: flex;
+}
+.product-container-right2 div:first-child{
+    font-weight: 600;
+    font-size: 25px;
+    padding-right: 35px;
+}
+.product-container-right2 div:last-child{
+    height: fit-content;
+    margin-top: 1.5%;
+}
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color: #2874F0 !important;
+  }
+.product-right-top-sortby{
+  display: flex;
+}
+.product-right-top-sortby span{
+  font-weight: 600;
+  padding: 0px 10px 4px 0;
+}
+.sortby-style{
+  border-bottom: 2px solid transparent;
+  display: inline-block;
+}
+.sortby-style-div{
+  padding: 0px 0 4px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.sortby-style-div-selected{
+  color: #2874f0;
+  cursor: default;
+  border-bottom: 2px solid #2874f0;
+  font-weight: 600;
+}
+.price-filter-container{
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+}
+.filter-style{
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+::ng-deep .ng5-slider .ng5-slider-pointer {
+  width: 12px !important;
+  height: 12px !important;
+  top: -4px !important;
+  background-color: white!important;
+  border: 1px solid #bababa !important;
+  outline: none;
+}
+::ng-deep .ng5-slider-bar{
+  height: 6px !important;
+}
+::ng-deep .ng5-slider-pointer::after {
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1),opacity .4s cubic-bezier(.25,.8,.25,1);
+}
+
+::ng-deep .ng5-slider-pointer.ng5-slider-active::after {
+  /*transform: scale(1);*/
+  opacity: 1;
+  background-color: rgba(255,64,129,.2);
+}
+
+::ng-deep .ng5-slider-bar-wrapper {
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+::ng-deep .ng5-slider-selection {
+  background-color: #ea3455;
+}
+::ng-deep .ng5-slider-bar {
+  height: 2px;
+}
+::ng-deep .ng5-slider-tick {
+  width: 3px !important;
+  height: 3px !important;
+  margin-top: 20px;
+  margin-left: 5px !important;
+  /*top: auto !important; !* to remove the default positioning *!*/
+  /*bottom: 0 !important;*/
+  background-color: #c2c2c2 !important;
+  /*border-top-left-radius: 3px !important;*/
+  /*border-top-right-radius: 3px !important;*/
+}
+.price-filter-dropdown-container{
+  margin: 15px -4px 0;
+  display: flex;
+}
+/*.min-filter{*/
+  /*width: 100%;*/
+/*}*/
+
+.min-filter-style{
+  width: 100px;
+  border: 1px solid #e0e0e0;
+  border-radius: 1px;
+  background-color: white;
+  height: 24px;
+  font-size: 14px;
+  padding: 0 5px;
+}
+.to-text{
+  text-transform: lowercase;
+  margin: 0 9px;
+  font-size: 14px;
+  color: #878787;
+}

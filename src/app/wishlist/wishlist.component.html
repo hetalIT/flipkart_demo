@@ -1,0 +1,74 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<div class="wishlist-container">
+  <div class="wishlist-wrapper">
+    <div class="wishlist-wrapper-left">
+        <div class="wishlist-wrapper-left1 background-style">
+          <img src="../../assets/img/user.svg" alt="User" class="wishlist-user">
+          <div class="wishlist-user-greetings">Hello</div>
+        </div>
+    </div>
+    <div class="wishlist-wrapper-right background-style" *ngIf="products.length > 0">
+      <div class="wishlist-wrapper-right1">
+        <div class="wishlist-wrapper-right11">
+          <span>My Wishlist ({{products.length}})</span>
+        </div>
+      </div>
+      <div class="cart-item"
+           *ngFor="let product of products; let i=index;" (click)="onClick(product._id, product.product_name, product.subsubcategory_name)"
+      >
+        <div class="cart-item1">
+          <div class="cart-item1-product">
+            <div class="cart-item1-product1">
+              <img [src]="product.product_image" alt="">
+            </div>
+            <div class="cart-item1-product2">
+              <div class="cart-item1-product21">
+                <span>{{product.product_name}}</span>
+              </div>
+              <div class="cart-item1-product22">
+                Seller: {{product.product_seller}}
+                <img src="../../assets/img/fb_assured.png" alt="" height="15">
+              </div>
+              <div class="cart-item1-product23">
+                &#8377; {{product.product_price}}
+              </div>
+            </div>
+            <div class="wishlist-item1-product3">
+              <img src="../../assets/img/delete.svg" class="delete-btn-style" (click)="onRemoveFromWishlist(product._id)">
+              <!--<div>-->
+                <!--Delivery by Tue Nov 5 | <span style="color: #388e3c;">Free </span>-->
+                <!--<span style="text-decoration: line-through;">&#8377;40</span>-->
+              <!--</div>-->
+            </div>
+          </div>
+          <!--<div class="cart-item1-quantity">-->
+            <!--<div class="product-quantity">-->
+
+              <!--<button class="quantity-button-minus" (click)="onMinusClick(i)" [disabled]="product.user_quantity<2">-</button>-->
+              <!--<div class="quantity-value">-->
+                <!--<input type="text" [attr.value]="product.user_quantity"-->
+                       <!--(change)="onQuantityChange($event.target.value,i)"-->
+                       <!--[attr.value]="product.user_quantity"-->
+                       <!--[attr.id]="'product'+i">-->
+              <!--</div>-->
+              <!--<button class="quantity-button-plus" (click)="onPlusClick(i)" [disabled]="product.product_quantity<=product.user_quantity">+</button>-->
+
+            <!--</div>-->
+            <!--<div class="product-save-remove">-->
+              <!--<div class="product-remove"><span (click)="onRemoveClick(product._id)">Remove</span></div>-->
+            <!--</div>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="wishlist-wrapper-right background-style" *ngIf="products.length == 0">
+      <div class="cart-empty21">
+        <img src="../../assets/img/empty_cart.png" alt="">
+        <div class="missing-items">Empty Wishlist</div>
+        <div class="login-text">You have no items in your wishlist. Start adding!</div>
+      </div>
+    </div>
+  </div>
+</div>

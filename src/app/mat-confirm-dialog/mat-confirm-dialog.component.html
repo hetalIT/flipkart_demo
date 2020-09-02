@@ -1,0 +1,12 @@
+<div class="dialog-container">
+  <div class="content-container">
+    <div>
+        <div class="remove-item-text">Remove Item</div>
+      <span class="content-span full-width">{{data.message}}</span>
+      <mat-icon (click)="closeDialog()" id="close-icon">clear</mat-icon>
+      <!-- <i class="material-icons">face</i> -->
+    </div>
+  </div>
+  <button mat-flat-button id="no-button" [mat-dialog-close]="false">Cancel</button>
+  <button mat-flat-button id="yes-button" [mat-dialog-close]="true" cdkFocusInitial>Remove</button>
+</div>

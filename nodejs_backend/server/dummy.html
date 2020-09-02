@@ -1,0 +1,109 @@
+<div class="main-image-magnifier-container">
+              
+    <div class="main-image-magnifier" 
+    
+    (mouseenter)="onMouseMove('zoomImage', 'zoomResult')">
+    <img [src]="product_image" alt="" id="zoomImage">
+    </div>
+    <div id="zoomResult" class="img-zoom-result"></div>
+  </div>
+
+
+
+
+
+<div class="nav-column">
+                    <h3 class="orange">Related Categories</h3>
+                    <ul>
+                        <li><a href="#">Pampers Diapers</a></li>
+                        <li><a href="#">Huggies Diapers</a></li>
+                        <li><a href="#">Diapers</a></li>
+                    </ul>
+        
+                    <h3 class="orange">Brands</h3>
+                    <ul>
+                        <li><a href="#">Driving shoes</a></li>
+                        <li><a href="#">Espadrilles</a></li>
+                    </ul>
+                </div>
+        
+                <div class="nav-column">
+                    <h3>Home</h3>
+                    <ul>
+                        <li><a href="#">Pampers Diapers</a></li>
+                        <li><a href="#">Huggies Diapers</a></li>
+                        <li><a href="#">Seventh Generation</a></li>
+                        <li><a href="#">Diapers</a></li>
+                        <li><a href="#">Derbies</a></li>
+                        <li><a href="#">Driving shoes</a></li>
+                        <li><a href="#">Espadrilles</a></li>
+                        <li><a href="#">Loafers</a></li>
+                    </ul>
+                </div>
+        
+                <div class="nav-column">
+                    <h3>Home</h3>
+                    <ul>
+                        <li><a href="#">Driving shoes</a></li>
+                        <li><a href="#">Espadrilles</a></li>
+                        <li><a href="#">Loafers</a></li>
+                    </ul>
+        
+                    <h3>Home</h3>
+                    <ul>
+                        <li><a href="#">Driving shoes</a></li>
+                        <li><a href="#">Espadrilles</a></li>
+                        <li><a href="#">Loafers</a></li>
+                    </ul>
+                </div>
+        
+                <div class="nav-column">
+                    <h3>Home</h3>
+                    <ul>
+                        <li><a href="#">Pampers Diapers</a></li>
+                        <li><a href="#">Huggies Diapers</a></li>
+                        <li><a href="#">Seventh Generation</a></li>
+                        <li><a href="#">Diapers</a></li>
+                        <li><a href="#">Derbies</a></li>
+                        <li><a href="#">Driving shoes</a></li>
+                        <li><a href="#">Espadrilles</a></li>
+                        <li><a href="#">Loafers</a></li>
+                    </ul>
+                </div>
+
+
+
+                // console.log(menu._id);console.log(subcategories);
+            if(subcategories){
+              this.subcategories.push(subcategories);
+              
+              subcategories.forEach(subcategory => {
+                  // subcats.forEach(subcategory => {
+                    this.apiCallService.getSubSubcategotyData(subcategory._id).subscribe((subsubcategory: any)=>{
+                      this.subsubcategories.push(subsubcategory);
+                     // console.log(subsubcategory);
+                    });
+                  //});
+                
+              });
+            //  this.subsubcategoriesList.push(this.subsubcategories);
+              //this.subsubcategories=[];
+            }
+
+
+
+            // if(this.subsubcategories.length > 0){
+              
+                //   this.subsubcategories.push(this.subsubcategories);
+                //   this.subsubcategories.splice(0,this.subsubcategories.length-1);
+                // }
+                subcategories.forEach(subcategory => {
+                  this.apiCallService.getSubSubcategotyData(subcategory._id).subscribe((subsubcategory: any)=>{
+                    
+                    this.subsubcategories.push(subsubcategory);
+    
+                   
+                  });
+                });
+                //this.subsubcategoriesList.push(this.subsubcategories);
+                // this.subsubcategories=[];

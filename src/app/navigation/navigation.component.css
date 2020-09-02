@@ -1,0 +1,214 @@
+/* Reset */
+.nav,
+.nav a,
+.nav ul,
+.nav li,
+.nav div,
+.nav form,
+.nav input {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.nav a {
+    text-decoration: none;
+    display: inline !important;
+}
+
+.nav li {
+    list-style: none;
+    display: flex;
+    padding: 12px 35px 9px 10px;
+ }
+ .nav li>span {
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+ }
+/* Menu Container */
+.nav {
+    display: flex;
+    position: relative;
+    cursor: default;
+    /* z-index: 500; */
+    z-index: 1;
+    width: 100%;
+    padding-left: 2%;
+    letter-spacing: 0;
+    line-height: 1.4;
+}
+
+/* Menu List */
+/* .nav > li {
+    display: block;
+    float: left;
+} */
+/* Menu Links */
+.nav > li > a {
+    position: relative;
+    /* display: block; */
+    z-index: 510;
+    height: 54px;
+    /* padding: 0 20px; */
+    line-height: 54px;
+
+    /* font-family: Helvetica, Arial, sans-serif; */
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    /* font-size: 13px; */
+    color: #000;
+    /* text-shadow: 0 0 1px rgba(0,0,0,.35); */
+
+    /* background: white; */
+    /* border-left: 1px solid #4b4441;
+    border-right: 1px solid #312a27; */
+
+    /* -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease; */
+}
+.nav > li:hover > a { background: #4b4441; }
+
+/* .nav > li:first-child > a {
+    border-radius: 3px 0 0 3px;
+    border-left: none;
+} */
+
+/* Menu Dropdown */
+.nav > li > div {
+    position: absolute;
+    display: block;
+    width: 100%;
+    top: 50px;
+    left: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    overflow:hidden ;
+
+    background: #ffffff;
+    border-radius: 0 0 3px 3px;
+
+    -webkit-transition: all .3s ease .15s;
+    -moz-transition: all .3s ease .15s;
+    -o-transition: all .3s ease .15s;
+    -ms-transition: all .3s ease .15s;
+    transition: all .3s ease .15s;
+}
+/* .nav > li:hover > div {
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+} */
+/* Menu Content Styles */
+.nav2{
+    position: absolute;
+    display: none;
+    padding: 0;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 13.5px;
+    margin-left: 1.5%;
+    z-index: 5;
+    /* margin-top: -1.5%; */
+    /* margin-top: 21% !important;
+    left: -24% !important; */
+    width: 1100px;
+    background-color: #FFFFFF;
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,.1);
+    overflow: hidden;
+    /* overflow-y: scroll; */
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    height: 35%;
+}
+.nav2 .nav-column {
+    float: left;
+    /* display: inline-block; */
+    height: 100%;
+    width: 20%;
+    padding: 0 0 0 2%;
+    /* padding: 2.5%; */
+}
+.nav2 .nav-column li{
+    list-style-type: none;
+    cursor: pointer;
+}
+.nav2 .nav-column h3 {
+    margin: 20px 0 10px 0;
+    line-height: 18px;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #372f2b;
+    text-transform: uppercase;
+}
+
+/* .nav2 .nav-column h3.orange { color: #ff722b; } */
+
+.nav2 .nav-column li a {
+    display: block;
+    line-height: 26px;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #888888;
+}
+
+.nav2 .nav-column li a:hover { color: #666666; }
+
+.color-white{
+    color: rgba(163, 157, 157, 0.918);
+    margin: 4px 0 0 0;
+    /* float: right; */
+    /* margin: 8% 0 0 6%; */
+}
+.navigation-menu-container{
+    width: 100% !important;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.16) !important;
+    /* background-color: #2b2929; */
+    /* display: inline; */
+}
+span[name="down"]{
+    display: block;
+}
+span[name="up"]{
+    display: none;
+}
+.subCatSign{
+    content: "";
+    opacity: 1;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+    border-left-color: #c2c2c2;
+    margin-left: 6px;
+    margin-top: 0.5%;
+}
+.subCatStyle
+{
+    padding: 8px 0 8px 0!important;
+    /* font-weight: 550; */
+}
+.subsubcatStyle, .no-items{
+    padding: 4px 0 4px 0;
+    color: #666;
+}
+.color1{
+    background-color: #fff;
+}
+.color2{
+    background-color: #F9F9F9;
+}

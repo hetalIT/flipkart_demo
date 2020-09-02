@@ -1,0 +1,16 @@
+.home-products-container{
+    display: flex;
+}
+.home-products-div:not(:last-child){
+    padding-right: 1.5%;
+}
+.home-products-div{
+    height: fit-content;
+    width: 33.5%;
+}
+.home-products-div{
+    cursor: pointer;
+}
+.home-products-div img{
+    border-radius: 13px;
+}

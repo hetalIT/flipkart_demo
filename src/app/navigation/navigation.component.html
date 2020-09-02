@@ -1,0 +1,23 @@
+<div class="navigation-menu-container">
+<ul class="nav">
+    <li *ngFor="let menu of Menus; let id=index" (mouseover)="onMouseOver(id)" (mouseout)="onMouseOut(id)" 
+    [attr.name]="id">
+        <span style="margin-right: 4px;">{{menu.category_name}}</span>
+        <span name="down" [attr.id]="'down'+id"><i class="fa fa-angle-down color-white" aria-hidden="true"></i></span>
+        <span name="up" [attr.id]="'up'+id"><i class="fa fa-angle-up color-white" aria-hidden="true"></i></span>
+    </li>
+</ul>
+</div>
+<ul class="nav2" *ngFor="let menu of Menus; let id=index" [attr.id]="'display'+id"
+(mouseover)="onMouseOver(id)" (mouseout)="onMouseOut(id)">
+    
+        <ul *ngFor="let subcat of subcategories[id]; let subcatId=index;" class="nav-column" 
+        [ngClass]="subcatId%2==0 ? 'color1' : 'color2'">
+            <b><li class="subCatStyle">{{subcat.subcategory_name}} <span class="subCatSign"></span></li></b>
+            <li *ngFor="let subsubcat of subsubcategories[id][subcatId];" class="subsubcatStyle" 
+            (click)="onMouseOut(id);onClick(subsubcat._id, subsubcat.subsubcategory_name)">
+                {{subsubcat.subsubcategory_name}}
+            </li>
+        </ul>
+        <b><li *ngIf="subcategories[id].length<1" style="padding: 1%;" class="no-items">No Items available!</li></b>
+</ul>

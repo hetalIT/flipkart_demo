@@ -1,0 +1,114 @@
+.mat-dialog-container{
+    padding: 0 !important;
+}
+.login-wrapper{
+    width: 100%;
+    display: flex;
+    /* height: 500px; */
+}
+.close-btn{
+    position: absolute;
+    right: 320px;
+    top: 40px;
+    color: white;
+    font-size: 2.2em;
+    font-weight: 600;
+    cursor: pointer;
+}
+.login-wrapper-left-part{
+    width: 40%;
+    background:  #2874f0 url('../../assets/img/login_img.png') center 85% no-repeat;
+    color: #fff;
+    padding: 40px 35px;
+    height: 500px;
+}
+.login-wrapper-right-part{
+    width: 60%;
+    padding: 56px 35px 16px;
+}
+.login-wrapper-left-part span{
+    font-size: 29px;
+    font-weight: 550;
+}
+.login-wrapper-left-part p{
+    font-size: 18px;
+    margin-top: 16px;
+    line-height: 150%;
+    letter-spacing: -0.4px;
+}
+.login-right-part1{
+    font-size: 16px;
+    width: 100%;
+}
+mat-form-field{
+    width: 100%;
+}
+::ng-deep .mat-focused .mat-form-field-placeholder{
+
+    color:#e0e0e0 !important;
+}
+.mat-focused .placeholder {
+    color: 	#696969;
+    font-size: 17px;
+}
+.login-right-part1 button{
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    border: none;
+    width: 100%;
+    height: 48px;
+    font-size: 17px;
+    border-radius: 2px;
+    outline: none;
+}
+.login-right-part11{
+    color: #fff;
+    background-color: #fb641b;
+    font-weight: 550;
+    margin-top: 20px;
+}
+.login-right-part12{
+    color: #2874f0;
+    background-color: #fff;
+    margin-top: 10px;
+    font-size: 13px;
+}
+.forgot-password{
+    position: absolute;
+    margin-top: -47px;
+    margin-left: 238px;
+    font-size: 15px;
+    font-weight: 550;
+    cursor: pointer;
+    color: #2874f0;
+}
+.user-registration-link{
+    position: absolute;
+    margin-top: 13em;
+    margin-left: 25px;
+    /* bottom: 72px; */
+    /* left: 0;
+    right: 0; */
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #2874f0;
+    font-weight: 550;
+    cursor: pointer;
+    text-align: center;
+}
+.mat-error{
+    font-weight: 550;
+}
+
+/* .mat-input-element {
+    caret-color: #e0e0e0;
+} */
+
+/* .login-right-part1 input[type=text]{
+    padding: 8px 10px 10px 0;
+    width: 100%;
+    color: #000;
+    font-size: inherit;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+} */

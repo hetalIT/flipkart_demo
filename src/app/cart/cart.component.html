@@ -1,0 +1,166 @@
+<app-header></app-header>
+<div class="cart-container">
+    <div class="cart-wrapper" *ngIf="cartProducts && cartProducts.length>0">
+        <div class="cart-wrapper-left" *ngIf="!isPlaceOrderClicked">
+            <div class="cart-header">
+                <div class="cart-header-left">
+                    <div class="cart-header-left1">
+                        My Cart ({{cartProducts.length}})
+                    </div>
+                </div>
+                <div class="cart-header-right">
+                    <div class="cart-header-right1">
+                        <div class="cart-header-right11">
+                            <img src="../../assets/img/deliver_cart.svg" alt="cart">
+                            <span>Deliver to</span>
+                        </div>
+                        <div class="cart-header-right12">
+                            <input type="text" placeholder="Enter delivery pincode" value="" maxlength="6"
+                            autocomplete="off" #pincode>
+                            <span [attr.disabled]="pincode.value">Check</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item"
+            *ngFor="let product of cartProducts; let i=index;"
+            >
+                <div class="cart-item1">
+                    <div class="cart-item1-product">
+                        <div class="cart-item1-product1">
+                            <img [src]="product.product_image" alt="" (click)="onClick(product._id, product.product_name)">
+                        </div>
+                        <div class="cart-item1-product2">
+                            <div class="cart-item1-product21">
+                                <span (click)="onClick(product._id, product.product_name)">{{product.product_name}}</span>
+                            </div>
+                            <div class="cart-item1-product22">
+                                Seller: {{product.product_seller}}
+                                <img src="../../assets/img/fb_assured.png" alt="" height="15">
+                            </div>
+                            <div class="cart-item1-product23">
+                                &#8377; {{product.product_price}}
+                            </div>
+                        </div>
+                        <div class="cart-item1-product3">
+                            <div>
+                                Delivery by Tue Nov 5 | <span style="color: #388e3c;">Free </span>
+                                <span style="text-decoration: line-through;">&#8377;40</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item1-quantity">
+                        <div class="product-quantity">
+
+                                <button class="quantity-button-minus" (click)="onMinusClick(i)" [disabled]="product.user_quantity<2">-</button>
+                                <div class="quantity-value">
+                                    <input type="text" [attr.value]="product.user_quantity"
+                                    (change)="onQuantityChange($event.target.value,i)"
+                                    [attr.id]="'product'+i">
+                                </div>
+                                <button class="quantity-button-plus" (click)="onPlusClick(i)" [disabled]="product.product_quantity<=product.user_quantity">+</button>
+
+                        </div>
+                        <div class="product-save-remove">
+                            <div class="product-save-later"><span>Save for later</span></div>
+                            <div class="product-remove"><span (click)="onRemoveClick(product._id)">Remove</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="cart-place-order" [class.sticky]="sticky" #stickyDiv> -->
+            <div class="cart-place-order">
+                <div class="cart-place-order1">
+                    <button (click)="onPlaceorderClick()"><span>Place Order</span></button>
+                </div>
+            </div>
+        </div>
+
+        <app-place-order *ngIf="isPlaceOrderClicked" style="width: 65%;" [price]="total_price">
+            <div class="cart-item"
+            *ngFor="let product of cartProducts; let i=index;"
+            >
+                <div class="cart-item1">
+                    <div class="cart-item1-product">
+                        <div class="cart-item1-product1">
+                            <img [src]="product.product_image" alt="" (click)="onClick(product._id, product.product_name)">
+                        </div>
+                        <div class="cart-item1-product2">
+                            <div class="cart-item1-product21">
+                                <span (click)="onClick(product._id, product.product_name)">{{product.product_name}}</span>
+                            </div>
+                            <div class="cart-item1-product22">
+                                Seller: {{product.product_seller}}
+                                <img src="../../assets/img/fb_assured.png" alt="" height="15">
+                            </div>
+                            <div class="cart-item1-product23">
+                                &#8377; {{product.product_price}}
+                            </div>
+                        </div>
+                        <div class="cart-item1-product3">
+                            <div>
+                                Delivery by Tue Nov 5 | <span style="color: #388e3c;">Free </span>
+                                <span style="text-decoration: line-through;">&#8377;40</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item1-quantity">
+                        <div class="product-quantity">
+
+                                <button class="quantity-button-minus" (click)="onMinusClick(i)" [disabled]="product.user_quantity<2">-</button>
+                                <div class="quantity-value">
+                                    <input type="text" [attr.value]="product.user_quantity"
+                                    (change)="onQuantityChange($event.target.value,i)"
+                                    [attr.value]="product.user_quantity"
+                                    [attr.id]="'product'+i">
+                                </div>
+                                <button class="quantity-button-plus" (click)="onPlusClick(i)" [disabled]="product.product_quantity<=product.user_quantity">+</button>
+
+                        </div>
+                        <div class="product-save-remove">
+                            <div class="product-remove"><span (click)="onRemoveClick(product._id)">Remove</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-place-order>
+
+        <div class="cart-wrapper-right">
+            <div class="cart-product-price-detail">
+                <div class="cart-product-price-detail1">Price details</div>
+                <div class="cart-product-price-detail2">
+                    <div class="cart-product-price-detail21">
+                            <div>Price ({{cartProducts.length}} items)</div>
+                            <span> &#8377;{{total_price}}</span>
+                    </div>
+                    <div class="cart-product-price-detail22">
+                            Delivery<span style="color: #388e3c;">FREE</span>
+                    </div>
+                    <div class="cart-product-price-detail23">
+                            <div class="cart-product-price-detail231">
+                                    Total Payable<span> &#8377;{{total_price}}</span>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-wrapper" *ngIf="!cartProducts || cartProducts.length==0">
+        <div class="cart-empty">
+            <div class="cart-empty1">
+                <div class="cart-empty11">My Cart</div>
+            </div>
+            <div class="cart-empty2">
+                <div class="cart-empty21">
+                    <img src="../../assets/img/empty_cart.png" alt="">
+                    <div class="missing-items">{{isUserLoggedIn ? 'Your cart is empty!' : 'Missing Cart items?'}}</div>
+                    <div class="login-text">{{isUserLoggedIn ? 'Add items to it now' : 'Login to see the items you added previously'}}.</div>
+                <button class="login-btn" [ngStyle]="{'background': isUserLoggedIn? '#2874f0': '#fb641b'}" (click)="onCartEmptyClick()"><span>{{isUserLoggedIn ? 'Shop now' : 'Login'}}</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

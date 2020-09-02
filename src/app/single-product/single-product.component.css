@@ -1,0 +1,211 @@
+.single-product-container{
+    background-color: #FFFFFF;
+    margin-top: 0.1%;
+}
+.single-product-wrapper{
+    padding: 16px 16px 16px 16px;
+    display: flex;
+}
+.single-product-wrapper-left{
+    width: 39%;
+}
+.single-product-wrapper-left1{
+    width: 100%;
+}
+.single-product-wrapper-left11{
+    display: flex;
+}
+/* .single-product-wrapper-left11 div:first-child{
+    width: 35% !important;
+   
+} */
+.image-list-div{
+    width: 13%;
+    z-index: 2;
+}
+.product-image-ul{
+    padding-left: 4px;
+    list-style-type: none;
+}
+.product-image-ul li{
+    padding: 4px;
+    height: 65px !important;
+}
+.product-image-ul li:hover{
+    outline: 2px solid #2874F0;
+    height: 63px !important;
+}
+.product-image-ul li{
+    cursor: pointer;
+}
+.product-image{
+    /* padding: 4px; */
+    /* display: inline-block; */
+    /* width: 100% !important; */
+    height: 100%;
+    background-position: 50% !important;
+    background-size: contain !important;
+}
+.main-image-magnifier-container{
+    width: 90%;
+    height: 450px;
+    /* transform: scale(2); */
+}
+.main-image-magnifier{
+    /* background-size: contain !important;
+    background-position: 50% !important;*/
+    height: 100%; 
+    width: 100% !important;
+    height: inherit;
+}
+.single-product-left2-container{
+    margin-top: 12px;
+}
+.single-product-left2-container ul{
+    width: 100%;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.single-product-left2-container ul li{
+    width: 50%;
+    padding-right: 5px;
+    /* padding: 0.8%; */
+    
+}
+.single-product-left2-container ul li> button{
+    width: 98%;
+    padding: 18px 8px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    font-size: 16px;
+    color: #fff;
+}
+.add-to-cart-btn{
+    background: #ff9f00;
+}
+.buy-now-btn{
+    background: #fb641b;
+}
+.add-to-cart-btn svg, .buy-now-btn svg
+{
+    margin-right: -6px;
+}
+.buy-now-btn-logo{
+    vertical-align: middle;
+    background-image: url('../../assets/img/with_buy_now_text.svg');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    /* color: white;
+    background-color: green; */
+}
+.like-btn{
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    position: absolute;
+    top: 120px;
+    left: 450px;
+    font-size: 24px;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+    color: #CCCCCC;
+}
+.like-btn span{
+    margin-top: -5px;
+}
+.single-product-wrapper-right{
+    padding: 0px 0px 0px 24px;
+    width: 61%;
+}
+.single-product-right{
+    width: 100%;
+    z-index: 2 !important;
+}
+.single-product-right1{
+    margin-top: 6px;
+}
+.single-product-right11{
+    font-size: 18px;
+}
+.single-product-right11 span:first-child{
+    color: #CCCCCC;
+    font-size: 16px;
+    font-weight: 550;
+}
+.single-product-right12{
+    padding-top: 8px!important;
+}
+.single-product-price{
+    font-size: 28px;
+    font-weight: 550;
+}
+#overlay{
+    border: 1px solid black;
+    width: 30%;
+    height: 42%;
+    display: none;
+    position: absolute;
+    transform: scale(2);
+    background-size: 100% !important;
+    /* padding-left: 5%; */
+    background-repeat: no-repeat !important;
+    margin-left: 13%;
+    /* padding-left: 9%; */
+    top: 37%;
+    transform: scale(2) !important;
+    
+    /* background: #FFFFFF !important; */
+    border-radius: 4px;
+    /* transform-origin: 50% 50%; */
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 20px 2px rgba(0,0,0,.2);
+  }
+  #overlay2{
+    width: 30%;
+    height: 43%;
+    display: none;
+    /* overflow: hidden; */
+    position: absolute;
+    margin-left: 13%;
+    background: #fff;
+    border-radius: 4px;
+    transform-origin: 50% 50%;
+    border: 1px solid #e0e0e0;
+    transform: scale(2) !important;
+    box-shadow: 0 4px 20px 2px rgba(0,0,0,.2);
+    /* padding-left: 9%; */
+    /* top: 25%; */
+    top: 35%;
+    /* z-index: 2; */
+    
+  }
+  #overlay3{
+      height: 80%;
+      width: 40%;
+      position: absolute;
+      display: inline-block;
+      margin-left: 35%;
+      overflow: hidden;
+      top: 18%;
+      background-color: green;
+  }
+  .magnifier-image{
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+  }
+  .magnifier-result-image{
+    /* width: 100%; */
+    height: 100%;
+    transform-origin: top left !important;
+    /* object-fit: contain ; */
+    transform: scale(2) !important;
+    /* transform: scaleX(2) !important; */
+    /* position: absolute; */
+    
+  }

@@ -1,0 +1,28 @@
+<app-header></app-header>
+<app-navigation></app-navigation>
+<div class="container file-style">
+        <label for="file">Choose File</label>
+      
+      <input
+        type="file"
+        (change)="onFileChange($event.target.files)"
+        multiple
+      />
+
+      <!-- <img [src]="imgname" alt="" /> -->
+      <!-- <img src="" id="myimg" width="300" height="300" style="object-fit: contain"> -->
+      <div id="imgResult" style="display: flex;">
+
+      </div>
+      <!-- <div *ngIf="uploadedImageList.length>0">
+        <img [src]="uploadedImageList[0]">
+      </div> -->
+      <!-- <img src="../../../nodejs_backend/server/upload/" alt="" /> -->
+      <!-- <input
+        type="file"
+        name="myfile"
+        (change)="onFileChange()"
+        ng2FileSelect
+        [uploader]="uploader"
+      /> -->
+</div>

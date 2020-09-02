@@ -1,0 +1,19 @@
+<ngx-slick-carousel class="carousel slider-carousel" 
+  #slickModal="slick-carousel" 
+  [config]="slideConfig" 
+>
+<div ngxSlickItem *ngFor="let product of product_details, let id=index" class="slide product-div" 
+[attr.id]="'slider'+id" [routerLink]="['product/', product.product_name]" (click)="onProductClick()">
+<!-- <img src="{{ product.product_image }}" alt="" width="100%"> -->
+<div class="product-image-container">
+  <div class="product-image" 
+  [ngStyle]="{'background': 'url('+product.product_image+') no-repeat'}" mat-raised-div
+  [matTooltip]="product.product_name" matTooltipPosition="above">
+  </div>
+</div>
+<div class="product-details">
+  <div class="product-name-details">{{product.product_name}}</div>
+  <div>&#8377; {{product.product_price}}</div>
+</div>
+</div>
+</ngx-slick-carousel>
